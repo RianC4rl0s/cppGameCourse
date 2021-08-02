@@ -34,6 +34,11 @@ bool mouseMB = false;                   // botão do meio do mouse pressionado
 bool mouseRB = false;                   // botão direito do mouse pressionado
 stringstream text;                      // texto a ser exibido na tela
 
+
+short mouseWheel = 0;
+int mouseSize = 10;
+int mDrawX = mouseX - (mouseSize / 2);
+int mDrawY = mouseY - (mouseSize / 2);
 //--------------------------------------------------------------------------------
 
 // protótipo do procedimento da janela
@@ -149,6 +154,8 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEMOVE:
 		mouseX = LOWORD(lParam);
 		mouseY = HIWORD(lParam);
+		mDrawX = mouseX - (mouseSize / 2);
+		mDrawY = mouseY - (mouseSize / 2);
 		return 0;
 	case WM_LBUTTONDOWN:
 		mouseLB = true;
@@ -171,11 +178,23 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_RBUTTONUP:
 		mouseRB = false;
 		return 0;
-
+	//CONSFIGURANDO O TAMANHO DO LAPIS
+	case WM_MOUSEWHEEL:
+		mouseWheel = GET_WHEEL_DELTA_WPARAM(wParam);
+		if (mouseWheel > 0) {
+			mouseSize += 1;
+		}
+		//SE FOR MENOR QUE 1, não diminui
+		if (mouseWheel < 0 && mouseSize > 1) {
+			mouseSize -= 1;
+		}
+		//InvalidateRect(hwnd, NULL, TRUE);
+		return 0;
 		// pintura da janela
 	case WM_PAINT:
 		hdc = GetDC(hwnd);
-
+		//Desenhando sem laço
+		/*
 		SetPixel(hdc, mouseX, mouseY, RGB(0, 0, 0));
 		SetPixel(hdc, mouseX + 1, mouseY+ 1, RGB(0, 0, 0));
 		SetPixel(hdc, mouseX, mouseY +1, RGB(0, 0, 0));
@@ -185,7 +204,18 @@ LRESULT CALLBACK WinProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SetPixel(hdc, mouseX - 1, mouseY, RGB(0, 0, 0));
 		SetPixel(hdc, mouseX + 1, mouseY - 1, RGB(0, 0, 0));
 		SetPixel(hdc, mouseX - 1, mouseY + 1, RGB(0, 0, 0));
+		*/
+		
 
+		//Fiz com for, interno, mas deveria usar uma função
+		for (int i = 0; i < mouseSize; i++){
+			for (int f = 0; f < mouseSize; f++) {
+				SetPixel(hdc, mDrawX + i, mDrawY + f, RGB(0, 0, 0));
+			}
+			//SetPixel(hdc, mDrawX + i, mDrawY + i, RGB(0, 0, 0));
+		}
+
+		
 		ReleaseDC(hwnd, hdc);
 		return 0;
 
