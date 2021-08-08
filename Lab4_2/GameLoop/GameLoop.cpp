@@ -69,8 +69,8 @@ void GameInit()
 
 	GetClientRect(hwnd, &rect);
 
-	x = randomNumber(0, windowWidth - bm.bmWidth);
-	y = randomNumber(0, windowHeight - bm.bmHeight);
+	x = 0;
+	y = 0;
 	speedX = 5;
 	speedY = 5;
 }
