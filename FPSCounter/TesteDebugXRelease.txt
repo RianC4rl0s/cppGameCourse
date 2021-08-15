@@ -1,0 +1,14 @@
+Tempos debug:
+Tempo transcorrido: 0.0277255 ; primeira vez Rodando.
+Tempo transcorrido: 0.0079807 ; Segunda vez Rodando.
+Tempo transcorrido: 0.0188089
+Tempo transcorrido: 0.0082877
+Tempo transcorrido: 0.0091333
+
+Tempos Release:
+Tempo transcorrido: 0.205826; Primeira vez rodando.
+Tempo transcorrido: 0.0072509; segunda vez rodando.
+Tempo transcorrido: 0.0120303
+Tempo transcorrido: 0.0151407
+Tempo transcorrido: 0.0088775
+
