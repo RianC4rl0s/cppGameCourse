@@ -207,7 +207,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     Engine * engine = new Engine();
 
     // configura janela
-    engine->window->Mode(FULLSCREEN);
+    engine->window->Mode(WINDOWED);
     engine->window->Size(800, 600);
     engine->window->Color(0, 0, 0);
     engine->window->Title("Frogger");
