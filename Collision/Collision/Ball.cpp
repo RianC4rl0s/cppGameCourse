@@ -31,7 +31,7 @@ Ball::Ball(Player* p)
 
 	// cria sprite da bola
 	sprite = new Sprite("Resources/Ball.png");
-
+	
 	// tamanho do player é 100x20
 	MoveTo(player->X() + 50.0f - sprite->Width() / 2.0f,
 		player->Y() - sprite->Height() - 2.0f,

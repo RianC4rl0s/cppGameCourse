@@ -80,7 +80,7 @@ void Player::OnCollision(Object* obj)
 		Circle* c = (Circle*)ball->BBox();
 
 		Rect* p = ((Rect*)bbox);
-
+		//verifica se esta em cima ou em baixo
 		if ((c->CenterX() > p->Left() && c->CenterX() < p->Right()) && (c->CenterY() > p->Bottom() || c->CenterY() < p->Top())) {
 						
 			if (c->CenterY() > p->Bottom()) {
@@ -97,7 +97,7 @@ void Player::OnCollision(Object* obj)
 			if (c->CenterX() > p->Right()) {
 				ball->MoveTo(x + c->radius + sprite->Width(), ball->Y());
 			}else if(c->CenterX() < p->Left()) {
-				ball->MoveTo(x - c->radius, ball->Y());
+				ball->MoveTo(x - 2*c->radius, ball->Y());
 			}
 			
 			ball->velX = -ball->velX;
