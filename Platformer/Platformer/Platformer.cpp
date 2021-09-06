@@ -35,9 +35,9 @@ void Platformer::Init()
     //Criando plataformas para testar
     Platform* platform = new Platform(window->CenterX()+380,window->CenterY(),LARGE);
     scene->Add(platform, STATIC);
-    Platform* platform2 = new Platform(2200, 200 , LARGE);
+    Platform* platform2 = new Platform(2000, 200 , LARGE);
     scene->Add(platform2, STATIC);
-    Platform* platform3 = new Platform(1500.0f, 0.0f, LARGE);
+    Platform* platform3 = new Platform(1300.0f, 0.0f, LARGE);
     scene->Add(platform3, STATIC);
 }
 
